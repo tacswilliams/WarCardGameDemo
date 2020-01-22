@@ -16,6 +16,10 @@ public class GameManager : MonoBehaviour
     private int playerScore = 0;
     private int cpuScore = 0;
 
+    public AudioSource audioSource;
+    public AudioClip win;
+    public AudioClip lose;
+
     // Start: Runs once at the beginning while the scene is loading
     void Start()
     {
@@ -59,12 +63,17 @@ public class GameManager : MonoBehaviour
             // Player has won. Increase player socre and set the UI text 
             playerScore += 1;
             playerScoreText.text = "Player: " + playerScore;
+
+            audioSource.PlayOneShot(win);
         }
         else if(right > left)
         {
             // CPU has won. Increase cpu score and set the UI text
             cpuScore += 1;
             cpuScoreText.text = "CPU: " + cpuScore;
+
+            audioSource.PlayOneShot(lose);
+
         }
     }
 }
